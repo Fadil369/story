@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <a href="./arabic.html" lang="ar" dir="rtl" style="position:fixed;top:12px;right:12px;z-index:9999;background:#0A1128;color:#fff;padding:.5rem .75rem;border-radius:8px;text-decoration:none;font-weight:600;">العربية</a>
+  <script>
+    (function(){
+      try{
+        const pref = localStorage.getItem('langPref');
+        if (pref === 'ar') { window.location.href = 'arabic.html'; }
+      }catch(e){}
+    })();
+  </script>
+    <button id="lang-toggle" style="position:fixed;top:12px;right:12px;z-index:9999;background:#0A1128;color:#fff;padding:.5rem .75rem;border-radius:8px;text-decoration:none;font-weight:600;border:none;cursor:pointer;">العربية</button>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const btn = document.getElementById('lang-toggle');
+        btn.addEventListener('click', function(){
+          try{ localStorage.setItem('langPref','ar'); }catch(e){}
+          window.location.href = 'arabic.html';
+        });
+      });
+    </script>
     <div id="app">
         <!-- Hero Section -->
         <section id="vision" class="section hero">
