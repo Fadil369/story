@@ -28,7 +28,9 @@
         <div class="muted">تأليف: د. محمد الفاضل</div>
         <div class="muted">عرض مباشر من story-arabic.md</div>
       </div>
-      <div><a href="./index.html" aria-label="العودة للصفحة الرئيسية">↩ العودة</a></div>
+      <div>
+        <button id="lang-toggle" style="background:#0A1128;color:#fff;padding:.4rem .6rem;border-radius:8px;border:none;cursor:pointer">EN ↔ AR</button>
+      </div>
     </div>
     <article id="content" class="article card" aria-live="polite">جارٍ تحميل النص...</article>
   </main>
@@ -106,6 +108,15 @@
       }
     }
     loadArabicStory();
+    document.addEventListener('DOMContentLoaded', function(){
+      const btn = document.getElementById('lang-toggle');
+      if(btn){
+        btn.addEventListener('click', function(){
+          try{ localStorage.setItem('langPref','en'); }catch(e){}
+          window.location.href = 'index.html';
+        });
+      }
+    });
   </script>
 </body>
 </html>
