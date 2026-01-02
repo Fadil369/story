@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" version="3.0" xml:lang="ar" dir="rtl">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:identifier id="bookid">urn:uuid:00000000-0000-0000-0000-000000000001</dc:identifier>
+    <dc:title>جيولوجيا الروح: الصدع والمحرك</dc:title>
+    <dc:language>ar</dc:language>
+    <dc:creator>د. محمد الفاضل</dc:creator>
+    <meta property="dcterms:modified">2026-01-02T00:00:00Z</meta>
+    <meta property="direction">rtl</meta>
+  </metadata>
+  <manifest>
+    <item id="index" href="index.xhtml" media-type="application/xhtml+xml"/>
+    <item id="story" href="story.xhtml" media-type="application/xhtml+xml"/>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="css" href="style.css" media-type="text/css"/>
+  </manifest>
+  <spine page-progression-direction="rtl">
+    <itemref idref="index"/>
+    <itemref idref="story"/>
+  </spine>
+</package>
