@@ -1,0 +1,85 @@
+name: Arabic Publish
+
+on:
+  push:
+    branches: [ main, feature/** ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate_epub:
+    name: Validate Arabic EPUB
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Download epubcheck
+        run: |
+          curl -sL -o epubcheck.zip https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip
+          unzip -q epubcheck.zip -d epubcheck
+      - name: Run epubcheck
+        run: |
+          java -jar epubcheck/epubcheck-5.1.0/epubcheck.jar publish/epub/arabic/book.epub || true
+      - name: Upload epubcheck report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: epubcheck-report
+          path: |
+            publish/epub/arabic/book.epub
+            epubcheck/**
+  generate_pdf:
+    name: Generate Arabic PDF
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright
+        run: |
+          npx -y playwright@1.40.0 install --with-deps chromium
+      - name: Serve site and generate PDF
+        run: |
+          cat > tmp_rovodev_generate_pdf.js << 'EOF'
+          const {chromium} = require('playwright');
+          const path = require('path');
+          const http = require('http');
+          const fs = require('fs');
+          const serve = http.createServer((req,res)=>{
+            let p = req.url.split('?')[0];
+            if (p === '/') p = '/publish/pdf/arabic/index.html';
+            const filePath = path.join(process.cwd(), p);
+            fs.readFile(filePath, (err,data)=>{
+              if(err){ res.writeHead(404); res.end('Not found'); return; }
+              const ext = path.extname(filePath).toLowerCase();
+              const type = ext === '.html' ? 'text/html; charset=utf-8' : (ext === '.css' ? 'text/css' : 'text/plain');
+              res.writeHead(200, {'Content-Type': type});
+              res.end(data);
+            });
+          });
+          (async () => {
+            await new Promise(r=>serve.listen(8080, r));
+            const browser = await chromium.launch();
+            const page = await browser.newPage({locale: 'ar'});
+            await page.goto('http://localhost:8080/publish/pdf/arabic/index.html', {waitUntil: 'networkidle'});
+            await page.pdf({
+              path: 'publish/pdf/arabic/book.pdf',
+              format: 'A4',
+              printBackground: true,
+              margin: {top: '15mm', bottom: '15mm', left: '15mm', right: '15mm'}
+            });
+            await browser.close();
+            serve.close();
+          })();
+          EOF
+          node tmp_rovodev_generate_pdf.js
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: arabic-pdf
+          path: publish/pdf/arabic/book.pdf
