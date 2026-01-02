@@ -1,0 +1,121 @@
+{
+  "book": {
+    "title": {
+      "english": "Geology of the Soul: The Crack and the Engine",
+      "arabic": "جيولوجيا الروح: الصدع والمحرك"
+    },
+    "subtitle": {
+      "english": "A Journey from Sudan to Silicon Valley through Medicine, Migration, and Innovation",
+      "arabic": "رحلة من السودان إلى وادي السيليكون عبر الطب والهجرة والابتكار"
+    },
+    "author": {
+      "name": "Dr. Mohamed El Fadil",
+      "name_arabic": "د. محمد الفاضل",
+      "bio_short": "Sudanese-Saudi physician, AI entrepreneur, and founder of BrainSAIT",
+      "bio_long": "Dr. Mohamed El Fadil is a physician and technology entrepreneur who bridges the worlds of medicine and artificial intelligence. Born in Sudan, educated in Saudi Arabia, he founded BrainSAIT to revolutionize healthcare through AI-powered solutions. His work aligns with Saudi Vision 2030's digital transformation goals.",
+      "website": "https://brainsait.com"
+    },
+    "publisher": {
+      "name": "BrainSAIT Publishing",
+      "location": "Riyadh, Saudi Arabia",
+      "oid": "1.3.6.1.4.1.61026"
+    },
+    "publication": {
+      "year": 2026,
+      "edition": "First Edition",
+      "isbn_english": "979-8-XXXX-XXXX-X",
+      "isbn_arabic": "979-8-XXXX-XXXX-X",
+      "language_english": "en",
+      "language_arabic": "ar",
+      "rights": "Copyright © 2026 Dr. Mohamed El Fadil. All Rights Reserved."
+    },
+    "categories": {
+      "primary": [
+        "Biography & Autobiography / Personal Memoirs",
+        "Biography & Autobiography / Medical",
+        "Business & Economics / Entrepreneurship"
+      ],
+      "secondary": [
+        "Technology / Artificial Intelligence",
+        "Medical / Healthcare",
+        "Self-Help / Personal Growth",
+        "Biography / Cultural Heritage"
+      ],
+      "bisac": [
+        "BIO026000 - BIOGRAPHY & AUTOBIOGRAPHY / Personal Memoirs",
+        "BIO017000 - BIOGRAPHY & AUTOBIOGRAPHY / Medical",
+        "BUS025000 - BUSINESS & ECONOMICS / Entrepreneurship",
+        "COM004000 - COMPUTERS / Intelligence (AI) & Semantics",
+        "MED058000 - MEDICAL / Health Care Delivery"
+      ]
+    },
+    "keywords": [
+      "memoir",
+      "healthcare AI",
+      "Sudan",
+      "Saudi Arabia",
+      "migration",
+      "entrepreneurship",
+      "systems thinking",
+      "medical innovation",
+      "Vision 2030",
+      "personal transformation",
+      "artificial intelligence",
+      "BrainSAIT",
+      "NPHIES",
+      "healthcare technology"
+    ],
+    "description": {
+      "short": "A powerful memoir of transformation—from witnessing an execution at age three in Sudan, to building AI healthcare solutions in Saudi Arabia. Through the lens of geology, Dr. Mohamed El Fadil shows how life's cracks become engines of innovation.",
+      "long": "Geology of the Soul is more than a memoir—it's a philosophical exploration of how pressure, time, and layers create identity. Dr. Mohamed El Fadil takes readers on an extraordinary journey from the banks of the Nile to the digital frontier of Saudi Arabia's Vision 2030.\n\nAt age three, he witnessed a public execution that shattered his childhood. Exiled to his grandfather's home, bullied at school, he learned that survival requires more than intelligence—it requires understanding systems. From poverty in Khartoum to medical school in Riyadh, from clinical practice to founding BrainSAIT, an AI healthcare company, this is a story of continuous transformation.\n\nUsing geological metaphors—cracks, layers, pressure, and engines—Dr. El Fadil reveals how trauma can become fuel, how migration creates new identities, and how systems thinking can revolutionize healthcare. His six teachers—Death, Sacred Texts, his grandfather Maki, Pain, the Theater of Life, and his son—shaped a journey from treating individual patients to building systems that serve millions.\n\nThis book speaks to anyone carrying their own 'cracks,' searching for their 'engine,' or dreaming of creating impact beyond themselves. It's a testament to resilience, innovation, and the power of seeing challenges not as endings, but as passages for light."
+    },
+    "themes": [
+      "Personal transformation through adversity",
+      "Systems thinking vs. individual action",
+      "Healthcare innovation and AI",
+      "Cultural identity and migration",
+      "Intergenerational wisdom",
+      "Vision 2030 and Saudi transformation",
+      "From medicine to technology entrepreneurship"
+    ],
+    "audience": {
+      "primary": "Adults 25-55 interested in memoirs, entrepreneurship, healthcare innovation",
+      "secondary": "Medical professionals, tech entrepreneurs, migrants, Arab diaspora",
+      "maturity": "General audience, some medical content"
+    },
+    "specs": {
+      "word_count_english": 25000,
+      "word_count_arabic": 25000,
+      "page_count_estimate": 280,
+      "reading_time_hours": 4.5,
+      "chapters": 40,
+      "parts": 4
+    }
+  },
+  "description_arabic": {
+      "short": "مذكرات تحوُّل قوية — من مشاهدة القصاص في سن الثالثة بتبوك، إلى بناء حلول ذكاء اصطناعي للرعاية الصحية في السعودية. عبر مجاز الجيولوجيا، يبيّن د. محمد الفاضل كيف تتحوّل الصدوع إلى محركات للابتكار.",
+      "long": "جيولوجيا الروح ليست مجرد سيرة ذاتية، بل محاولة لرسم خريطة جيولوجية للروح: كيف تتشكل الصدوع وتتراكم الرواسب، وكيف يحول الضغط والزمن الألم إلى رؤية. تبدأ الرحلة بصدمة مبكرة، تمر بالمنفى وتكوين الصحراء، ثم الطب حيث يُكتشف حد النظام، لتنتهي عند بناء محرك (MASTERLINC) ينسّق عقولاً صناعية لخدمة صحة الإنسان ضمن رؤية السعودية 2030." 
+    },
+  "marketing": {
+    "taglines": [
+      "Every crack is a passage for light",
+      "From the Nile to Vision 2030: One man's journey to transform healthcare",
+      "How cracks become engines",
+      "The geological map of a revolutionary mind"
+    ],
+    "comparable_titles": [
+      "When Breath Becomes Air by Paul Kalanithi",
+      "Educated by Tara Westover",
+      "The Gene by Siddhartha Mukherjee",
+      "Shoe Dog by Phil Knight"
+    ],
+    "unique_selling_points": [
+      "Unique geological metaphor framework",
+      "Rare insider view of Saudi healthcare innovation",
+      "Bilingual edition (Arabic/English)",
+      "Combines memoir, philosophy, and business insights",
+      "Aligned with Vision 2030 narrative",
+      "First-hand account of AI in healthcare from practitioner perspective"
+    ]
+  }
+}

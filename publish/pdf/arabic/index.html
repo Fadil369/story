@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>جيولوجيا الروح: الصدع والمحرك — للطباعة</title>
+  <link rel="stylesheet" href="./print.css" />
+</head>
+<body class="a4">
+  <h1>جيولوجيا الروح: الصدع والمحرك</h1>
+  <h2>تأليف: د. محمد الفاضل</h2>
+  <div id="doc">جارٍ تحميل النص...</div>
+  <script>
+    function fmtInline(s){
+      s = s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+      s = s.replace(/(^|\s)\*(.+?)\*(?=\s|$)/g,'$1<em>$2</em>');
+      return s;
+    }
+    function mdToHtml(md){
+      const lines = md.split(/\n/);
+      const out=[]; let list=false;
+      for (const raw of lines){
+        const line = raw;
+        if (/^\s*$/.test(line)){ if(list){ out.push('</ul>'); list=false;} continue; }
+        const h = line.match(/^\s*(#{1,6})\s+(.+)/);
+        if(h){ if(list){ out.push('</ul>'); list=false;} const lvl=h[1].length; out.push(`<h${lvl}>${h[2]}</h${lvl}>`); continue; }
+        const li = line.match(/^\s*[-•]\s+(.+)/);
+        if(li){ if(!list){ out.push('<ul>'); list=true;} out.push(`<li>${fmtInline(li[1])}</li>`); continue; }
+        out.push(`<p>${fmtInline(line)}</p>`);
+      }
+      if(list){ out.push('</ul>'); }
+      return out.join('\n')
+        .replace(/\(28°N\s*36°E\)/g,'(<a href="https://www.google.com/maps/search/?api=1&query=Tabuk+Municipality+Mosque" target="_blank">28°N 36°E</a>)')
+        .replace(/\(منزل\s+الجد\s+مكي\)/g,'(<a href="https://www.google.com/maps/search/?api=1&query=Khartoum+Sudan" target="_blank">منزل الجد مكي</a>)');
+    }
+    fetch('../../story-arabic.md').then(r=>r.text()).then(t=>{
+      document.getElementById('doc').innerHTML = mdToHtml(t);
+      // Optional page breaks before top-level part headers
+      document.querySelectorAll('h1').forEach((h,i)=>{ if(i>0){ h.classList.add('page-break'); }});
+      window.setTimeout(()=>{ /* window.print(); */ }, 500);
+    }).catch(_=>{ document.getElementById('doc').textContent='تعذر تحميل الملف.'; });
+  </script>
+</body>
+</html>

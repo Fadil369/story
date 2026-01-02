@@ -1,0 +1,8 @@
+@page { size: A4; margin: 20mm; }
+html, body { direction: rtl; font-family: "Noto Naskh Arabic", "Noto Sans Arabic", serif; color: #111; }
+h1,h2,h3{ page-break-after: avoid; margin: 0 0 .6rem; }
+p, li { line-height: 1.9; font-size: 12.5pt; }
+ul{ margin: 0 1rem; }
+.a4 { width: 210mm; }
+.page-break { page-break-before: always; }
+a { color: #0645ad; text-decoration: none; }
