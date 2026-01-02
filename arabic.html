@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>جيولوجيا الروح: الصدع والمحرك — النسخة العربية</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Noto Naskh Arabic', 'Noto Sans Arabic', Arial, sans-serif; background:#0a0c10; color:#e8eaed; }
+    .container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+    .article { line-height: 1.95; font-size: 1.08rem; }
+    .muted { color: #9aa0a6; font-size: .9rem; }
+    a.map { color: #8ab4f8; text-decoration: none; border-bottom: 1px dashed #8ab4f8; }
+    h1,h2,h3,h4,h5,h6{ color:#ffffff; margin:1.25rem 0 .5rem; }
+    p{ margin:.6rem 0; }
+    ul{ margin:.6rem 1.25rem; }
+    li{ margin:.25rem 0; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .topbar a { color:#8ab4f8; text-decoration:none; }
+    .card { background:#111418; border:1px solid #1f2328; border-radius:12px; padding:1rem; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <div>
+        <h1 style="margin:0 0 .25rem 0">جيولوجيا الروح: الصدع والمحرك</h1>
+        <div class="muted">تأليف: د. محمد الفاضل</div>
+        <div class="muted">عرض مباشر من story-arabic.md</div>
+      </div>
+      <div><a href="./index.html" aria-label="العودة للصفحة الرئيسية">↩ العودة</a></div>
+    </div>
+    <article id="content" class="article card" aria-live="polite">جارٍ تحميل النص...</article>
+  </main>
+  <script>
+    function renderInlineFormatting(html){
+      // bold **...** and emphasis *...* (very conservative)
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1<\/strong>');
+      html = html.replace(/(^|\s)\*(.+?)\*(?=\s|$)/g, '$1<em>$2<\/em>');
+      return html;
+    }
+    function linesToNodes(text){
+      const lines = text.split(/\n/);
+      const frag = document.createDocumentFragment();
+      let listMode = false;
+      let ul;
+      for (const raw of lines){
+        const line = raw; // keep RTL punctuation as is
+        if (/^\s*$/.test(line)) { // blank line
+          if (listMode){ listMode=false; frag.appendChild(ul); ul=null; }
+          continue;
+        }
+        const hMatch = line.match(/^\s*(#{1,6})\s+(.+)/);
+        if (hMatch){
+          if (listMode){ listMode=false; frag.appendChild(ul); ul=null; }
+          const level = Math.min(hMatch[1].length,6);
+          const h = document.createElement('h'+level);
+          h.textContent = hMatch[2];
+          frag.appendChild(h);
+          continue;
+        }
+        const liMatch = line.match(/^\s*[-•]\s+(.+)/);
+        if (liMatch){
+          if (!listMode){ listMode=true; ul=document.createElement('ul'); }
+          const li=document.createElement('li');
+          li.innerHTML = renderInlineFormatting(liMatch[1]);
+          ul.appendChild(li);
+          continue;
+        }
+        const p = document.createElement('p');
+        p.innerHTML = renderInlineFormatting(line);
+        frag.appendChild(p);
+      }
+      if (listMode && ul){ frag.appendChild(ul); }
+      return frag;
+    }
+    async function loadArabicStory() {
+      try {
+        const res = await fetch('./story-arabic.md');
+        const text = await res.text();
+        // Minimal cleanup: remove leading BOMs and ensure RTL preserved
+        let html = text
+          // Link the Tabuk execution coordinates (28°N 36°E) to the Municipality Mosque in Tabuk
+          .replace(/\(28°N\s*36°E\)/g,
+            '(<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tabuk+Municipality+Mosque">28°N 36°E</a>)')
+          // Link the Grandfather Maki home in Khartoum when mentioned inline with the marker
+          .replace(/\(منزل\s+الجد\s+مكي\)/g,
+            '(<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Khartoum+Sudan">منزل الجد مكي</a>)');
+        document.getElementById('content').textContent = '';
+        // Insert as HTML with simple markdown-ish headers rendering for lines starting with #
+        const host = document.getElementById('content');
+        host.innerHTML = '';
+        const frag = linesToNodes(html);
+        host.appendChild(frag);
+        // Post-process: convert known markers to links across all elements
+        host.querySelectorAll('p, li').forEach(el => {
+          el.innerHTML = el.innerHTML
+            .replace(/\(28°N\s*36°E\)/g,
+              '(<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tabuk+Municipality+Mosque">28°N 36°E</a>)')
+            .replace(/\(منزل\s+الجد\s+مكي\)/g,
+              '(<a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Khartoum+Sudan">منزل الجد مكي</a>)');
+        });
+      } catch (e) {
+        document.getElementById('content').textContent = 'تعذر تحميل النص.';
+        console.error(e);
+      }
+    }
+    loadArabicStory();
+  </script>
+</body>
+</html>

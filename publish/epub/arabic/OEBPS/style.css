@@ -1,0 +1,6 @@
+@charset "UTF-8";
+html, body { direction: rtl; writing-mode: horizontal-tb; }
+body { font-family: "Noto Naskh Arabic", "Noto Sans Arabic", serif; line-height: 1.9; background: #fff; color: #111; }
+h1,h2,h3,h4,h5,h6{ margin: 1rem 0 .5rem; }
+p{ margin: .5rem 0; }
+pre{ white-space: pre-wrap; }
