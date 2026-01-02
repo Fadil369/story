@@ -206,3 +206,4 @@ The geological metaphor throughout creates a unique lens for understanding perso
 ---
 
 *"The crack is not the end. It is the passage for light."*
+\n## Arabic Edition\n\n- Open index.html and click the ‘العربية’ button to view the RTL page.\n- Direct Arabic page: arabic.html (loads story-arabic.md).\n- EPUB (Arabic) output: publish/epub/arabic/book.epub.\n- PDF (Arabic) scaffold: publish/pdf/arabic/index.html with print.css.\n\nMap markers auto-linking in web/PDF:\n- (28°N 36°E) → Tabuk Municipality Mosque\n- (منزل الجد مكي) → Khartoum, Sudan\n\nNext steps:\n- Optional: add full markdown-to-HTML prebuild for arabic.html.\n- Optional: automate EPUB validation and PDF generation in CI.\n
