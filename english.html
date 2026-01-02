@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geology of the Soul — English Edition</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    :root{ color-scheme: light dark; --bg:#0a0c10; --fg:#e8eaed; --muted:#9aa0a6; --accent:#8ab4f8; --card:#111418; --border:#1f2328; }
+    @media (prefers-color-scheme: light){ :root{ --bg:#ffffff; --fg:#0b0f14; --muted:#5f6368; --accent:#155bd6; --card:#f8fafc; --border:#e2e8f0; } }
+    [data-theme="light"]{ --bg:#ffffff; --fg:#0b0f14; --muted:#5f6368; --accent:#155bd6; --card:#f8fafc; --border:#e2e8f0; }
+    [data-theme="dark"]{ --bg:#0a0c10; --fg:#e8eaed; --muted:#9aa0a6; --accent:#8ab4f8; --card:#111418; --border:#1f2328; }
+    body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--fg); }
+    .container{ max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+    .article{ line-height: 1.85; font-size: 1.04rem; }
+    .muted{ color: var(--muted); font-size:.9rem; }
+    h1,h2,h3,h4,h5,h6{ color:var(--fg); margin:1.25rem 0 .5rem; }
+    p{ margin:.6rem 0; text-wrap: pretty; }
+    .topbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    .btn{ background:#0A1128; color:#fff; padding:.4rem .6rem; border-radius:8px; border:none; cursor:pointer }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem; }
+    a.map{ color:var(--accent); border-bottom:1px dashed var(--accent); text-decoration:none }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <div>
+        <h1>Geology of the Soul: The Crack and the Engine</h1>
+        <div class="muted">By: Dr. Mohamed El Fadil</div>
+        <div class="muted">Rendered directly from story-english.md</div>
+      </div>
+      <div style="display:flex; gap:.5rem; align-items:center;">
+        <button id="theme-toggle" class="btn" type="button">Reading Mode</button>
+        <button id="lang-toggle" class="btn" type="button">EN ↔ AR</button>
+      </div>
+    </div>
+    <article id="content" class="article card" aria-live="polite">Loading…</article>
+  </main>
+  <script>
+    function renderInlineFormatting(html){
+      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1<\/strong>');
+      html = html.replace(/(^|\s)\*(.+?)\*(?=\s|$)/g, '$1<em>$2<\/em>');
+      return html;
+    }
+    function linesToNodes(text){
+      const lines = text.split(/\n/);
+      const frag = document.createDocumentFragment();
+      let listMode=false; let ul;
+      for(const raw of lines){
+        const line = raw;
+        if(/^\s*$/.test(line)){ if(listMode){ listMode=false; frag.appendChild(ul); ul=null;} continue; }
+        const h = line.match(/^\s*(#{1,6})\s+(.+)/);
+        if(h){ if(listMode){ listMode=false; frag.appendChild(ul); ul=null;} const lvl=Math.min(h[1].length,6); const el=document.createElement('h'+lvl); el.textContent=h[2]; frag.appendChild(el); continue; }
+        const li = line.match(/^\s*[-•]\s+(.+)/);
+        if(li){ if(!listMode){ listMode=true; ul=document.createElement('ul'); } const liEl=document.createElement('li'); liEl.innerHTML=renderInlineFormatting(li[1]); ul.appendChild(liEl); continue; }
+        const p=document.createElement('p'); p.innerHTML=renderInlineFormatting(line); frag.appendChild(p);
+      }
+      if(listMode && ul){ frag.appendChild(ul); }
+      return frag;
+    }
+    async function loadEnglishStory(){
+      try{
+        const res = await fetch('./story-english.md');
+        const txt = await res.text();
+        const host = document.getElementById('content');
+        host.innerHTML='';
+        host.appendChild(linesToNodes(txt));
+      }catch(e){ document.getElementById('content').textContent='Failed to load.'; }
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      // Theme
+      try{ const saved=localStorage.getItem('theme'); if(saved){ document.documentElement.setAttribute('data-theme', saved); } }catch(e){}
+      document.getElementById('theme-toggle').addEventListener('click', function(){
+        const cur=document.documentElement.getAttribute('data-theme');
+        const next = cur==='light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        try{ localStorage.setItem('theme', next);}catch(e){}
+      });
+      document.getElementById('lang-toggle').addEventListener('click', function(){
+        try{ localStorage.setItem('langPref','ar'); }catch(e){}
+        window.location.href='arabic.html';
+      });
+      loadEnglishStory();
+    });
+  </script>
+</body>
+</html>

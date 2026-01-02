@@ -5,17 +5,95 @@
     <dc:title>جيولوجيا الروح: الصدع والمحرك</dc:title>
     <dc:language>ar</dc:language>
     <dc:creator>د. محمد الفاضل</dc:creator>
-    <meta property="dcterms:modified">2026-01-02T00:00:00Z</meta>
+    <meta property="dcterms:modified">2026-01-02T20:53:20Z</meta>
     <meta property="direction">rtl</meta>
   </metadata>
   <manifest>
     <item id="index" href="index.xhtml" media-type="application/xhtml+xml"/>
-    <item id="story" href="story.xhtml" media-type="application/xhtml+xml"/>
     <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
     <item id="css" href="style.css" media-type="text/css"/>
+    <item id="chap1" href="chapters/chap-01.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap2" href="chapters/chap-02.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap3" href="chapters/chap-03.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap4" href="chapters/chap-04.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap5" href="chapters/chap-05.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap6" href="chapters/chap-06.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap7" href="chapters/chap-07.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap8" href="chapters/chap-08.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap9" href="chapters/chap-09.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap10" href="chapters/chap-10.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap11" href="chapters/chap-11.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap12" href="chapters/chap-12.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap13" href="chapters/chap-13.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap14" href="chapters/chap-14.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap15" href="chapters/chap-15.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap16" href="chapters/chap-16.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap17" href="chapters/chap-17.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap18" href="chapters/chap-18.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap19" href="chapters/chap-19.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap20" href="chapters/chap-20.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap21" href="chapters/chap-21.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap22" href="chapters/chap-22.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap23" href="chapters/chap-23.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap24" href="chapters/chap-24.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap25" href="chapters/chap-25.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap26" href="chapters/chap-26.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap27" href="chapters/chap-27.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap28" href="chapters/chap-28.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap29" href="chapters/chap-29.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap30" href="chapters/chap-30.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap31" href="chapters/chap-31.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap32" href="chapters/chap-32.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap33" href="chapters/chap-33.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap34" href="chapters/chap-34.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap35" href="chapters/chap-35.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap36" href="chapters/chap-36.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap37" href="chapters/chap-37.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap38" href="chapters/chap-38.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap39" href="chapters/chap-39.xhtml" media-type="application/xhtml+xml"/>
+    <item id="chap40" href="chapters/chap-40.xhtml" media-type="application/xhtml+xml"/>
   </manifest>
   <spine page-progression-direction="rtl">
     <itemref idref="index"/>
-    <itemref idref="story"/>
+    <itemref idref="chap1"/>
+    <itemref idref="chap2"/>
+    <itemref idref="chap3"/>
+    <itemref idref="chap4"/>
+    <itemref idref="chap5"/>
+    <itemref idref="chap6"/>
+    <itemref idref="chap7"/>
+    <itemref idref="chap8"/>
+    <itemref idref="chap9"/>
+    <itemref idref="chap10"/>
+    <itemref idref="chap11"/>
+    <itemref idref="chap12"/>
+    <itemref idref="chap13"/>
+    <itemref idref="chap14"/>
+    <itemref idref="chap15"/>
+    <itemref idref="chap16"/>
+    <itemref idref="chap17"/>
+    <itemref idref="chap18"/>
+    <itemref idref="chap19"/>
+    <itemref idref="chap20"/>
+    <itemref idref="chap21"/>
+    <itemref idref="chap22"/>
+    <itemref idref="chap23"/>
+    <itemref idref="chap24"/>
+    <itemref idref="chap25"/>
+    <itemref idref="chap26"/>
+    <itemref idref="chap27"/>
+    <itemref idref="chap28"/>
+    <itemref idref="chap29"/>
+    <itemref idref="chap30"/>
+    <itemref idref="chap31"/>
+    <itemref idref="chap32"/>
+    <itemref idref="chap33"/>
+    <itemref idref="chap34"/>
+    <itemref idref="chap35"/>
+    <itemref idref="chap36"/>
+    <itemref idref="chap37"/>
+    <itemref idref="chap38"/>
+    <itemref idref="chap39"/>
+    <itemref idref="chap40"/>
   </spine>
 </package>
